@@ -1,0 +1,108 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 2017  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Intel and sold by Intel or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+*/
+(header "symbol" (version "1.2"))
+(symbol
+	(rect 0 0 328 208)
+	(text "pll_audio" (rect 132 0 192 16)(font "Arial" (font_size 10)))
+	(text "inst" (rect 8 192 25 204)(font "Arial" ))
+	(port
+		(pt 0 72)
+		(input)
+		(text "inclk0" (rect 0 0 31 14)(font "Arial" (font_size 8)))
+		(text "inclk0" (rect 4 56 36 71)(font "Arial" (font_size 8)))
+		(line (pt 0 72)(pt 56 72))
+	)
+	(port
+		(pt 0 96)
+		(input)
+		(text "areset" (rect 0 0 36 14)(font "Arial" (font_size 8)))
+		(text "areset" (rect 4 80 38 95)(font "Arial" (font_size 8)))
+		(line (pt 0 96)(pt 56 96))
+	)
+	(port
+		(pt 328 72)
+		(output)
+		(text "c0" (rect 0 0 14 14)(font "Arial" (font_size 8)))
+		(text "c0" (rect 310 56 322 71)(font "Arial" (font_size 8)))
+	)
+	(port
+		(pt 328 96)
+		(output)
+		(text "c1" (rect 0 0 14 14)(font "Arial" (font_size 8)))
+		(text "c1" (rect 310 80 320 95)(font "Arial" (font_size 8)))
+	)
+	(port
+		(pt 328 120)
+		(output)
+		(text "c2" (rect 0 0 14 14)(font "Arial" (font_size 8)))
+		(text "c2" (rect 310 104 322 119)(font "Arial" (font_size 8)))
+	)
+	(port
+		(pt 328 144)
+		(output)
+		(text "locked" (rect 0 0 36 14)(font "Arial" (font_size 8)))
+		(text "locked" (rect 286 128 322 143)(font "Arial" (font_size 8)))
+	)
+	(drawing
+		(text "Cyclone IV E" (rect 234 188 534 390)(font "Arial" ))
+		(text "inclk0 frequency: 50.000 MHz" (rect 66 66 289 146)(font "Arial" ))
+		(text "Operation Mode: Normal" (rect 66 82 264 178)(font "Arial" ))
+		(text "Clk " (rect 67 107 152 228)(font "Arial" ))
+		(text "Ratio" (rect 104 107 235 228)(font "Arial" ))
+		(text "Ph (dg)" (rect 148 107 334 228)(font "Arial" ))
+		(text "DC (%)" (rect 192 107 422 228)(font "Arial" ))
+		(text "c0" (rect 71 124 153 262)(font "Arial" ))
+		(text "192/3125" (rect 92 124 234 262)(font "Arial" ))
+		(text "0.00" (rect 156 124 334 262)(font "Arial" ))
+		(text "50.00" (rect 197 124 423 262)(font "Arial" ))
+		(text "c1" (rect 71 141 151 296)(font "Arial" ))
+		(text "6/3125" (rect 99 141 234 296)(font "Arial" ))
+		(text "0.00" (rect 156 141 334 296)(font "Arial" ))
+		(text "50.00" (rect 197 141 423 296)(font "Arial" ))
+		(text "c2" (rect 71 158 153 330)(font "Arial" ))
+		(text "3/3125" (rect 99 158 234 330)(font "Arial" ))
+		(text "0.00" (rect 156 158 334 330)(font "Arial" ))
+		(text "50.00" (rect 197 158 423 330)(font "Arial" ))
+		(line (pt 0 0)(pt 329 0))
+		(line (pt 329 0)(pt 329 209))
+		(line (pt 0 209)(pt 329 209))
+		(line (pt 0 0)(pt 0 209))
+		(line (pt 64 105)(pt 233 105))
+		(line (pt 64 121)(pt 233 121))
+		(line (pt 64 138)(pt 233 138))
+		(line (pt 64 155)(pt 233 155))
+		(line (pt 64 172)(pt 233 172))
+		(line (pt 64 105)(pt 64 172))
+		(line (pt 89 105)(pt 89 172)(line_width 3))
+		(line (pt 145 105)(pt 145 172)(line_width 3))
+		(line (pt 189 105)(pt 189 172)(line_width 3))
+		(line (pt 232 105)(pt 232 172))
+		(line (pt 56 56)(pt 271 56))
+		(line (pt 271 56)(pt 271 191))
+		(line (pt 56 191)(pt 271 191))
+		(line (pt 56 56)(pt 56 191))
+		(line (pt 327 72)(pt 271 72))
+		(line (pt 327 96)(pt 271 96))
+		(line (pt 327 120)(pt 271 120))
+		(line (pt 327 144)(pt 271 144))
+	)
+)
