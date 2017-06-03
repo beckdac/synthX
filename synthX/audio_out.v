@@ -37,7 +37,6 @@ module audio_out
 	wire [63:0] sample_out;
 	wire i2s_ready_for_sample;
 	wire rdempty;
-	reg fifo_empty;
 
 	// dual clock fifo
 	dcfifo_audio DCFIFO_AUDIO
@@ -52,22 +51,9 @@ module audio_out
 			.rdempty(rdempty),
 			.wrfull(wrfull)
 		);
-	
-	always @(posedge clk or posedge aclr)
-		begin
-			if (aclr)
-				begin
-					fifo_empty <= 0;
-				end
-			else
-				begin
-					if (rdempty)
-						fifo_empty <= 1;
-					else
-						fifo_empty <= 0;
-				end
-		end
 
+	assign sample_ready = !rdempty;
+	
 	// i2s transmitter
 	i2s_tx I2S_TX
 		(
@@ -76,7 +62,7 @@ module audio_out
 			.lrck(lrck),
 			.dout(dout),
 			.ready(i2s_ready_for_sample),
-			.sample_ready(!fifo_empty),
+			.sample_ready(sample_ready),
 			.sample(sample_out)
 		);	
 

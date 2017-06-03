@@ -34,15 +34,16 @@ module i2s_tx
 			else if (bits == 32 && lrck)
 				begin
 //					if (sample_ready)
-//						begin
+						begin
 							left <= sample[63:32];
 							right <= sample[31:0];
-/*						end
-					else
+						end
+/*					else
 						begin
 							left <= 32'd0;
 							right <= 32'd0;
-						end*/
+						end
+*/
 				end
 		end
 

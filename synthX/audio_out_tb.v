@@ -43,7 +43,7 @@ module audio_out_tb();
 			#CLOCK_PERIOD_NS
 			// ready should fall
 			wrreq <= 0;
-			#(CLOCK_PERIOD_NS * 2 * 1350)
+			#(CLOCK_PERIOD_NS * 2 * 2700)
 			// ready should come back up
 			$finish;
 		end
