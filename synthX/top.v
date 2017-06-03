@@ -12,8 +12,6 @@ module top
 	wire aclr;
 	assign aclr = !aclr_;
 
-	assign i2s_sck = !clk;
-
 	wire trigger;
 	assign trigger = !trigger_;
 
