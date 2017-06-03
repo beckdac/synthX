@@ -13,15 +13,20 @@ module shift_reg
 		input aclr			// asyncrhonous clear
 	);
 
-	reg [11:0] read_addr;
+	reg [11:0] read_addr = 12'd0;
 	reg [17:0] memory [4095:0];
 
-	always @(posedge clk)
+	always @(posedge clk or posedge(aclr))
 		begin
-			if (wren)
-				memory[addr] <= in;
+			if (aclr)
+				begin
+					read_addr <= 0;
+				end
 			else
-				read_addr <= addr;
+				if (wren)
+					memory[addr] <= in;
+				else
+					read_addr <= addr;
 		end
 	
 	assign out = memory[read_addr];

@@ -69,6 +69,8 @@ module karplus_strong
 					we <= 1'b0;
 					state <= 4'd9;		// idle the state machine
 					last_clk <=	1'b1;
+					trigger_count <= 12'd0;
+					last_trigger <= 1'b0;
 				end
 			else
 				begin
