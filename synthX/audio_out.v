@@ -11,9 +11,9 @@ module audio_out
 		input [63:0] sample,	// next sample input
 		input wrreq,			// active high sample input is ready
 		output wrfull,			// active high the fifo is full
-		output lclk,			// i2s, left / righ channel clock
+		output lrck,			// i2s, left / righ channel clock
 		output bck,				// i2s, bit clock
-		output reg dout,		// i2s, bit stream
+		output dout,			// i2s, bit stream
 		output sck				// i2s, system clock
 	);
 
@@ -31,8 +31,11 @@ module audio_out
 			.locked(pll_locked)
 		);
 
+	assign bck = clk_3MHz;
+	assign sck = clk;
+
 	wire fifo_empty;
-	reg [63:0] sample_out;
+	wire [63:0] sample_out;
 	wire i2s_ready_for_sample;
 
 	// dual clock fifo
@@ -54,8 +57,10 @@ module audio_out
 		(
 			.sclk(clk_3MHz),
 			.aclr(aclr),
+			.lrck(lrck),
+			.dout(dout),
 			.ready(i2s_ready_for_sample),
-			.sample_available(!fifo_empty),
+			.sample_ready(!fifo_empty),
 			.sample(sample_out)
 		);	
 
