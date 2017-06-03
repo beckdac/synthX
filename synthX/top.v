@@ -12,7 +12,7 @@ module top
 	wire aclr;
 	assign aclr = !aclr_;
 
-	assign i2s_sck = clk;
+	assign i2s_sck = !clk;
 
 	wire trigger;
 	assign trigger = !trigger_;
@@ -20,9 +20,9 @@ module top
 	reg clk_sample = 0;
 	reg [3:0] clk_sample_count = 3'd0;
 
-	reg [2:0] cutoff = 3'd0;
+	reg [2:0] cutoff = 3'b011;
 	wire [15:0] sample;
-	reg [11:0] tone = 0;
+	reg [11:0] tone = 12'd699;
 
 	karplus_strong KS1
 		(
