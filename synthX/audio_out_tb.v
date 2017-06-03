@@ -45,6 +45,19 @@ module audio_out_tb();
 			wrreq <= 0;
 			#(CLOCK_PERIOD_NS * 2 * 2700)
 			// ready should come back up
+			sample[63:32] <= 3743;
+			sample[31:0] <= 255;
+			wrreq <= 1;
+			#CLOCK_PERIOD_NS
+			wrreq <= 0;
+			#CLOCK_PERIOD_NS
+			sample[63:32] <= 255;
+			sample[31:0] <= 3743;
+			wrreq <= 1;
+			#CLOCK_PERIOD_NS
+			wrreq <= 0;
+			#CLOCK_PERIOD_NS
+			#(CLOCK_PERIOD_NS * 2 * 5400)
 			$finish;
 		end
 
