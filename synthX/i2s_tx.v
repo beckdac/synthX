@@ -12,15 +12,16 @@ module i2s_tx
 	reg [5:0] bits;
 	reg	[31:0] left;
 	reg [31:0] right;
+	reg sample_valid;
 
 	always @(negedge sclk or posedge aclr)
 		begin
 			if (aclr)
-				bits <= 1;
+				bits <= 1'b1;
 			else if (bits == 32)
-				bits <= 1;
+				bits <= 1'b1;
 			else
-				bits <= bits + 1;
+				bits <= bits + 1'b1;
 		end
 
 	// load the next sample at the end
@@ -33,17 +34,16 @@ module i2s_tx
 				end
 			else if (bits == 32 && lrck)
 				begin
-//					if (sample_ready)
+					if (sample_valid)
 						begin
 							left <= sample[63:32];
 							right <= sample[31:0];
 						end
-/*					else
+					else
 						begin
 							left <= 32'd0;
 							right <= 32'd0;
 						end
-*/
 				end
 		end
 
@@ -52,11 +52,27 @@ module i2s_tx
 	always @(negedge sclk or posedge aclr)
 		begin
 			if (aclr)
-				ready <= 1;
+				begin
+					ready <= 1;
+				end
 			else if (bits == 32 && lrck)
-				ready <= 1;
+				begin
+					ready <= 1;
+				end
 			else
-				ready <= 0;
+				begin
+					ready <= 0;
+				end
+		end
+
+	always @(negedge sclk or posedge aclr)
+		begin
+			if (aclr)
+				sample_valid <= 0;
+			else if (bits == 32 && lrck)
+				sample_valid <= sample_ready;
+			else
+				sample_valid <= sample_valid;
 		end
 
 	always @(negedge sclk or posedge aclr)

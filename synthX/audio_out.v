@@ -37,6 +37,7 @@ module audio_out
 	wire [63:0] sample_out;
 	wire i2s_ready_for_sample;
 	wire rdempty;
+	wire sample_ready;
 
 	// dual clock fifo
 	dcfifo_audio DCFIFO_AUDIO
