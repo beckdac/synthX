@@ -33,27 +33,26 @@ module i2s_tx
 				end
 			else if (bits == 32 && lrck)
 				begin
-					if (sample_ready)
-						begin
+//					if (sample_ready)
+//						begin
 							left <= sample[63:32];
 							right <= sample[31:0];
-						end
+/*						end
 					else
 						begin
 							left <= 32'd0;
 							right <= 32'd0;
-						end
+						end*/
 				end
 		end
 
 	// assert the ready flag for one clock cycle to accept the next sample
-	// into the internal buffer (sample) - this gives 32 clocks to get it
-	// loaded (note it happens when the right sample is being written)
+	// into the internal buffer (sample) - 
 	always @(negedge sclk or posedge aclr)
 		begin
 			if (aclr)
 				ready <= 1;
-			else if (bits == 32 && !lrck)
+			else if (bits == 32 && lrck)
 				ready <= 1;
 			else
 				ready <= 0;

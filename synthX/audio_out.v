@@ -34,9 +34,10 @@ module audio_out
 	assign bck = clk_3MHz;
 	assign sck = clk;
 
-	wire fifo_empty;
 	wire [63:0] sample_out;
 	wire i2s_ready_for_sample;
+	wire rdempty;
+	reg fifo_empty;
 
 	// dual clock fifo
 	dcfifo_audio DCFIFO_AUDIO
@@ -48,9 +49,24 @@ module audio_out
 			.wrclk(clk),
 			.wrreq(wrreq),
 			.q(sample_out),
-			.rdempty(fifo_empty),
+			.rdempty(rdempty),
 			.wrfull(wrfull)
 		);
+	
+	always @(posedge clk or posedge aclr)
+		begin
+			if (aclr)
+				begin
+					fifo_empty <= 0;
+				end
+			else
+				begin
+					if (rdempty)
+						fifo_empty <= 1;
+					else
+						fifo_empty <= 0;
+				end
+		end
 
 	// i2s transmitter
 	i2s_tx I2S_TX
